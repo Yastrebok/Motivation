@@ -25,7 +25,9 @@
     </tr>
     <tr></tr>
 </table>
-
+<br><br>
+<a href="/users/delete/${user.id}">Delete</a>
+<br><br>
 <a href="/menu">Menu</a>
 </body>
 </html>

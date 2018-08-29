@@ -11,6 +11,8 @@ import java.util.List;
 @Repository
 public class UserRepositoryImpl implements UserRepository {
 
+    private static final String MAPPER_NAMESPACE = "";
+
     @Autowired
     public JdbcTemplate jdbcTemplate;
 

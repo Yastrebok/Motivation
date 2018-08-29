@@ -66,6 +66,15 @@
             <artifactId>tomcat-embed-core</artifactId>
             <version>8.5.29</version>
         </dependency>
+        <dependency>
+            <groupId>com.jayway.jsonpath</groupId>
+            <artifactId>json-path</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.sun.jersey</groupId>
+            <artifactId>jersey-bundle</artifactId>
+            <version>1.19.2</version>
+        </dependency>
     </dependencies>
 
     <build>

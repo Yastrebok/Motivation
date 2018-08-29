@@ -16,17 +16,19 @@
     </tr>
         <#list users as user>
         <tr>
-            <td><a href="/user/${user.id}"> ${user.id}</a></td>
+            <td><a href="/users/user/${user.id}"> ${user.id}</a></td>
             <td>${user.username}</td>
             <td>${user.email}</td>
             <td>${user.age}</td>
-            <td><a href="/delete/${user.id}">Delete</a> </td>
-            <td><a href="/update/${user.id}">Edit</a> </td>
+            <br>
+            <td><a href="/users/update/${user.id}">Edit</a> </td>
         </tr>
         </#list>
 
 </table>
-
-<a href="menu.ftl">Menu</a>
+<br>
+<a href="/menu">Menu</a>
+<br><br>
+<a href="/users/addUser">New User</a>
 </body>
 </html>
