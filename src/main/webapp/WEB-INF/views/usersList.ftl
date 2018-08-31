@@ -21,7 +21,9 @@
             <td>${user.email}</td>
             <td>${user.age}</td>
             <br>
-            <td><a href="/users/update/${user.id}">Edit</a> </td>
+            <td><a href="/users/update/${user.id}"> Edit  </a> </td>
+            <br>
+            <td><a href="/allMarks/${user.id}"> Marks  </a> </td>
         </tr>
         </#list>
 

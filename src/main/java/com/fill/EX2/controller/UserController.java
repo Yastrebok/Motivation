@@ -42,7 +42,7 @@ public class UserController {
     @PostMapping("/addUser")
     public String addUser(@ModelAttribute("user") User user) {
         userService.save(user);
-        return "redirect:/all";
+        return "redirect:/users/all";
     }
 
 
@@ -63,4 +63,7 @@ public class UserController {
         userService.update(user);
         return "redirect:/user/" + user.getId();
     }
+
+
+
 }
