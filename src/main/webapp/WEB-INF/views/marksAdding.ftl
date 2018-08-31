@@ -17,7 +17,7 @@
     <p>Rate</p>
     <input title="Rate" type="text" name="rate">
     <p>Date</p>
-    <input title="Date" type="date" name="timestamp">
+    <input title="Date" type="date" name="date">
     <br><br>
     <a href="/menu">Cancel </a><br>
 

@@ -17,7 +17,7 @@ public class MarksDaoService {
         return marksRepository.getMarksByUser(user_id);
     }
 
-    public List<MarksDto> insertMarks(MarksDto marksDto){
-        return marksRepository.insertMarks(marksDto);
+    public void insertMarks(MarksDto marksDto){
+        marksRepository.insertMarks(marksDto);
     }
 }

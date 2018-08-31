@@ -19,7 +19,7 @@
             <td>${mark.subject_id}</td>
             <td>${mark.mark}</td>
             <td>${mark.rate}</td>
-            <td>${mark.timestamp}</td>
+            <td>${mark.date}</td>
         </tr>
         </#list>
 
