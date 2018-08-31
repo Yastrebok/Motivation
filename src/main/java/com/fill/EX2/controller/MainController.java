@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import java.util.Date;
 import java.util.List;
 
 @Controller
@@ -46,7 +45,7 @@ public class MainController {
     @PostMapping("/allMarks/addMark")
     public String addSubject(@ModelAttribute("marksDao") MarksDto marksDto) {
         if (marksDto.getDate() == null) {
-            marksDto.setDate(new Date());
+            marksDto.setDate((java.sql.Date) new java.util.Date());
         }
         marksDaoService.insertMarks(marksDto);
         return "menu";

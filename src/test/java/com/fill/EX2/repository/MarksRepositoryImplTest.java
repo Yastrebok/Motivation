@@ -24,7 +24,7 @@ public class MarksRepositoryImplTest {
         newDto.setSubject_id(7);
         newDto.setRate(1);
         newDto.setMark(8);
-        newDto.setDate(new Date("2018-08-30"));
+        newDto.setDate((java.sql.Date) new Date());
 
         assertEquals(newDto, marksRepository.getMarksByUser(7));
     }
