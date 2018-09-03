@@ -22,12 +22,11 @@
             <td>${mark.date}</td>
         </tr>
         </#list>
-
 </table>
 
 <br><br>
-<a href="/allMarks/addMark">Add mark</a>
+<a href="/allMarks/addMark/${user_id}">Add mark</a>
 <br><br>
-<a href="/menu">Menu</a>
+<a href="/users/all"> Back</a>
 </body>
 </html>

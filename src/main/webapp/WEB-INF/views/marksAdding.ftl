@@ -7,17 +7,30 @@
 <body>
 <form name="Username" action="/allMarks/addMark" method="post">
 
+    <table>
+        <tr>
+            <td>User :</td>
+            <td><input title="User_id" type="text" name="user_id" value=${user_id}></td>
+        </tr>
+        <tr>
+            <td>Subject :</td>
+            <td><select name="subject_id">
+                <#list listSubject as tmplattribute>
+                    <option value="${tmplattribute.subject_id}">${tmplattribute.subject_name}</option>
+                </#list>
+            </select></td>
+        </tr>
+        <tr>
+            <td>Marks :</td>
+            <td><input title="Mark" type="text" name="mark"></td>
+        </tr>
+        <tr>
+            <td>Date of receipt :</td>
+            <td><input title="Date" type="date" name="date"></td>
+        </tr>
+    </table>
 
-    <p>User</p>
-    <input title="User_id" type="text" name="user_id">
-    <p>Subject</p>
-    <input title="Subject_id" type="text" name="subject_id">
-    <p>Marks</p>
-    <input title="Mark" type="text" name="mark">
-    <p>Rate</p>
-    <input title="Rate" type="text" name="rate">
-    <p>Date</p>
-    <input title="Date" type="date" name="date">
+
     <br><br>
     <a href="/menu">Cancel </a><br>
 

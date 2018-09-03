@@ -4,6 +4,8 @@ import com.fill.EX2.entity.User;
 
 import java.util.List;
 
+import static com.fill.EX2.repository.UserRepository.UserResult;
+
 public interface UserService {
 
     List<User> findAll();
@@ -15,4 +17,6 @@ public interface UserService {
     void deleteById(int id);
 
     void update(User user);
+
+    List<UserResult> getUserResult(Integer user_id);
 }

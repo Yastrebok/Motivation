@@ -2,6 +2,7 @@ package com.fill.EX2.controller;
 
 import com.fill.EX2.entity.User;
 import com.fill.EX2.service.UserService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.List;
 
+@Slf4j
 @Controller
 @RequestMapping("/users")
 public class UserController {
@@ -64,6 +66,13 @@ public class UserController {
         return "redirect:/user/" + user.getId();
     }
 
+    @GetMapping("/{id}/sum")
+    public String getResultSum(@PathVariable("id") Integer user_id, Model model){
+        model.addAttribute("userResult", userService.getUserResult(user_id));
+        log.info(userService.getUserResult(user_id).toString());
+        model.addAttribute("user_name", userService.getById(user_id).getUsername());
+        return "userGetResult";
+    }
 
 
 }
