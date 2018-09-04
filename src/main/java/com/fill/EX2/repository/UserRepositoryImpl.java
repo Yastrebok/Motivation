@@ -23,9 +23,9 @@ public class UserRepositoryImpl implements UserRepository {
     }
 
     @Override
-    public void save(User user) {
+    public Integer save(User user) {
         String sql = "INSERT INTO user (user_name,email,age) values (?,?,?)";
-        jdbcTemplate.update(sql, user.getUsername(),user.getEmail(), user.getAge());
+        return jdbcTemplate.update(sql, user.getUsername(),user.getEmail(), user.getAge());
     }
 
     @Override

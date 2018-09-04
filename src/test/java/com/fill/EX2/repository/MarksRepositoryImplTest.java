@@ -14,6 +14,8 @@ public class MarksRepositoryImplTest {
 
     @Autowired
     private MarksRepositoryImpl marksRepository;
+    @Autowired
+    private UserRepository userRepository;
 
     @Test
     public void getMarksByUser() {

@@ -1,6 +1,7 @@
 package com.fill.EX2.repository;
 
 import com.fill.EX2.entity.User;
+import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -12,15 +13,24 @@ import java.util.List;
 
 public interface UserRepository {
 
+    /**
+     *
+     * @return
+     */
     List<User> findAll();
 
-    void save(User user);
+    /**
+     *
+     * @param user
+     * @return
+     */
+    Integer save(User user);
 
     User getById(int id);
 
     void deleteById(int id);
 
-    void update(User user);
+    void updateUser(User user);
 
     List<UserResult> getUserResult(Integer user_id);
 
@@ -40,5 +50,14 @@ public interface UserRepository {
         return sum;
     };
 
-
+    @Data
+    @Builder
+    @NoArgsConstructor(access = AccessLevel.PUBLIC)
+    @AllArgsConstructor(access = AccessLevel.PUBLIC)
+    class User {
+        private int id;
+        private String username;
+        private String email;
+        private int age;
+    }
 }
