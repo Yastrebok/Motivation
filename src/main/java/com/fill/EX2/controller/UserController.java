@@ -1,6 +1,5 @@
 package com.fill.EX2.controller;
 
-import com.fill.EX2.entity.User;
 import com.fill.EX2.service.UserService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +13,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.List;
 
+import static com.fill.EX2.service.UserService.UserDto;
+
 @Slf4j
 @Controller
 @RequestMapping("/users")
@@ -25,7 +26,7 @@ public class UserController {
 
     @GetMapping("/all")
     public String getAllUsers(Model model) {
-        List<UserService.UserDto> userList = userService.findAll();
+        List<UserDto> userList = userService.findAll();
         model.addAttribute("users", userList);
         return "usersList";
     }
@@ -42,7 +43,7 @@ public class UserController {
     }
 
     @PostMapping("/addUser")
-    public String addUser(@ModelAttribute("user") User user) {
+    public String addUser(@ModelAttribute("user") UserDto user) {
         userService.save(user);
         return "redirect:/users/all";
     }
@@ -61,7 +62,7 @@ public class UserController {
     }
 
     @PostMapping("/update")
-    public String updateUser(@ModelAttribute("user") User user) {
+    public String updateUser(@ModelAttribute("user") UserDto user) {
         userService.update(user);
         return "redirect:/user/" + user.getId();
     }

@@ -1,6 +1,5 @@
 package com.fill.EX2.controller;
 
-import com.fill.EX2.entity.MarksDto;
 import com.fill.EX2.service.MarksDaoService;
 import com.fill.EX2.service.SubjectService;
 import com.fill.EX2.service.UserService;
@@ -14,6 +13,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.List;
+
+import static com.fill.EX2.repository.MarkRepository.Mark;
 
 @Controller
 @RequestMapping("/")
@@ -40,7 +41,7 @@ public class MainController {
 
     @GetMapping("/allMarks/{user_id}")
     public String getMarksByUser(@PathVariable("user_id") Integer user_id, Model model){
-        List<MarksDto> marksDtoList = marksDaoService.getMarkSByUser(user_id);
+        List<Mark> marksDtoList = marksDaoService.getMarkSByUser(user_id);
         model.addAttribute("marksDao", marksDtoList);
         model.addAttribute("user_id", user_id);
         return "marksManager";
@@ -53,9 +54,9 @@ public class MainController {
     }
 
     @PostMapping("/allMarks/addMark")
-    public String addSubject(@ModelAttribute("marksDao") MarksDto marksDto) {
+    public String addSubject(@ModelAttribute("marksDao") Mark marksDto) {
         if (marksDto.getDate() == null) {
-            marksDto.setDate((java.sql.Date) new java.util.Date());
+            marksDto.setDate("");
         }
         marksDaoService.insertMarks(marksDto);
         return "menu";

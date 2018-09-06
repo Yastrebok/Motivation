@@ -1,29 +1,30 @@
 package com.fill.EX2.repository;
 
-import com.fill.EX2.entity.MarksDto;
-import com.fill.EX2.mapper.MarksDtoMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
+import static com.fill.EX2.repository.MarkRepository.MARK_MAPPER;
+import static com.fill.EX2.repository.MarkRepository.Mark;
+
 @Repository
-public class MarksRepositoryImpl {
+public class MarkRepositoryImpl {
 
     @Autowired
     JdbcTemplate jdbcTemplate;
 
-    public List<MarksDto> getMarksByUser(Integer user_id){
+    public List<Mark> getMarksByUser(Integer user_id){
         String query = "SELECT * from marks_data WHERE user_id = ?";
-        return jdbcTemplate.query(query, new MarksDtoMapper(), user_id);
+        return jdbcTemplate.query(query, MARK_MAPPER, user_id);
     }
 
-
-    public void insertMarks(MarksDto marksDto){
+    public Integer insertMarks(Mark marks){
         String query = "INSERT INTO marks_data ( subject_id, rate, mark, user_id, date) VALUES(?,?,?,?,?)";
-        jdbcTemplate.update(query, marksDto.getSubject_id(), marksDto.getRate(),
-                marksDto.getMark(), marksDto.getUser_id(),marksDto.getDate());
+        return jdbcTemplate.update(query, marks.getSubject_id(), marks.getRate(),
+                marks.getMark(), marks.getUser_id(),marks.getDate());
     }
+
 }
 

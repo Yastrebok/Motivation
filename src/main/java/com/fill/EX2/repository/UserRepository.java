@@ -1,6 +1,5 @@
 package com.fill.EX2.repository;
 
-import com.fill.EX2.entity.User;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -17,18 +16,18 @@ public interface UserRepository {
      *
      * @return
      */
-    List<User> findAll();
+    List<User> getAllUsers();
 
     /**
      *
      * @param user
      * @return
      */
-    Integer save(User user);
+    Integer saveUser(User user);
 
-    User getById(int id);
+    User getUserById(int id);
 
-    void deleteById(int id);
+    void deleteUserById(int id);
 
     void updateUser(User user);
 
@@ -60,4 +59,13 @@ public interface UserRepository {
         private String email;
         private int age;
     }
+
+    RowMapper<User> USER_MAPPER = (ResultSet resultSet, int row) -> {
+        User user = new User();
+        user.setId(resultSet.getInt("id"));
+        user.setUsername(resultSet.getString("username"));
+        user.setEmail(resultSet.getString("email"));
+        user.setAge(resultSet.getInt("age"));
+        return user;
+    };
 }

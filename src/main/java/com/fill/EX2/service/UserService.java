@@ -1,6 +1,5 @@
 package com.fill.EX2.service;
 
-import com.fill.EX2.entity.User;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -11,13 +10,13 @@ import java.util.List;
 
 import static com.fill.EX2.repository.UserRepository.UserResult;
 
-interface UserService {
+public interface UserService {
 
-    List<UserDto> findAll();
+    List<UserServiceImpl.UserDto> findAll();
 
-    void save(User user);
+    void save(UserDto user);
 
-    User getById(int id);
+    UserDto getById(int id);
 
     void deleteById(int id);
 

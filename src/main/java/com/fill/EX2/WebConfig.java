@@ -1,4 +1,4 @@
-package com.fill.EX2.config;
+package com.fill.EX2;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;

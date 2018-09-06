@@ -1,11 +1,12 @@
 package com.fill.EX2.service;
 
-import com.fill.EX2.entity.Subject;
 import com.fill.EX2.repository.SubjectRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+
+import static com.fill.EX2.repository.SubjectRepository.*;
 
 @Service
 public class SubjectService {

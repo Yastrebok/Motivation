@@ -1,6 +1,5 @@
 package com.fill.EX2.controller;
 
-import com.fill.EX2.entity.Subject;
 import com.fill.EX2.service.SubjectService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -12,6 +11,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.List;
+
+import static com.fill.EX2.repository.SubjectRepository.Subject;
 
 @Controller
 @RequestMapping("/subjects")
@@ -60,7 +61,7 @@ public class SubjectController {
     @PostMapping("/update")
     public String updateSubject(@ModelAttribute("subject") Subject subject){
         subjectService.updateSubject(subject);
-        return "redirect:/subjects/subject/"+ subject.getSubject_id();
+        return "redirect:/subjects/subject/"+ subject.getId();
     }
 
 }

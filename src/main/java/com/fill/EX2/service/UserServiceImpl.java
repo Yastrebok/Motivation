@@ -6,6 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
+
+import static com.fill.EX2.repository.UserRepository.UserResult;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -20,46 +23,55 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public List<UserDto> findAll() {
-        return userRepository.findAll();
+        return userRepository.getAllUsers().stream()
+                .map(this::convertToUserDto)
+                .collect(Collectors.toList());
     }
 
     @Override
-    public void save(UserDto user) {
-        User user1 = convertUser(user);
-        userRepository.save(user1);
+    public void save(UserDto userDto) {
+        userRepository.saveUser(convertToUser(userDto));
     }
 
     @Override
     public UserDto getById(int id) {
-        repo.getIds();
-        getUserBYIDs();
-
-
-        User byId = userRepository.getById(id);
-        UserDto userDto = convertUser(byId);
-        return userDto;
+        User byId = userRepository.getUserById(id);
+        return convertToUserDto(byId);
     }
 
     @Override
     public void deleteById(int id) {
-        userRepository.deleteById(id);
+        //???
+        userRepository.deleteUserById(id);
     }
 
     @Override
-    public void update(UserRepository.User user) {
-        userRepository.updateUser(user);
+    public void update(UserDto userDto) {
+        userRepository.updateUser(convertToUser(userDto));
     }
 
     @Override
-    public List<UserRepository.UserResult> getUserResult(Integer user_id) {
+    public List<UserResult> getUserResult(Integer user_id) {
         return userRepository.getUserResult(user_id);
     }
 
-    private UserRepository.User convertUser(UserDto userDto) {
-
+    private User convertToUser(UserDto userDto) {
+        return User.builder()
+                .id(userDto.getId())
+                .username(userDto.getUsername())
+                .age(userDto.getAge())
+                .email(userDto.getEmail())
+                .build();
     }
 
-    private UserDto convertUser(User user) {
-
+    private UserDto convertToUserDto(User user) {
+        return UserDto.builder()
+                .id(user.getId())
+                .username(user.getUsername())
+                .age(user.getAge())
+                .email(user.getEmail())
+                .build();
     }
+
+
 }
