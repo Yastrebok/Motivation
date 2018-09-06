@@ -3,18 +3,24 @@ package com.fill.EX2.repository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.jdbc.core.RowMapper;
+import org.springframework.jdbc.core.namedparam.BeanPropertySqlParameterSource;
+import org.springframework.jdbc.core.namedparam.SqlParameterSource;
+import org.springframework.jdbc.core.simple.SimpleJdbcInsert;
 import org.springframework.stereotype.Repository;
 
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.List;
 
 @Repository
 public class UserRepositoryImpl implements UserRepository {
 
+    private JdbcTemplate jdbcTemplate;
+    private SimpleJdbcInsert jdbcInsert;
+
     @Autowired
-    public JdbcTemplate jdbcTemplate;
+    public UserRepositoryImpl(JdbcTemplate jdbcTemplate) {
+        this.jdbcTemplate = jdbcTemplate;
+        this.jdbcInsert = new SimpleJdbcInsert(jdbcTemplate.getDataSource()).withTableName("user").usingGeneratedKeyColumns("user_id");
+    }
 
     @Override
     public List<User> getAllUsers() {
@@ -24,17 +30,8 @@ public class UserRepositoryImpl implements UserRepository {
 
     @Override
     public Integer saveUser(User user) {
-
-            Integer newUser_id =  jdbcTemplate.queryForObject("SELECT MAX(user_id) as maxId FROM user", new RowMapper<Integer>() {
-                        @Override
-                        public Integer mapRow(ResultSet rs, int rowNum) throws SQLException {
-                            return (rs.getInt(1)+1);
-                        }
-            });
-
-        String sql = "INSERT INTO user (user_id, user_name,email,age) values (?,?,?,?)";
-        jdbcTemplate.update(sql,newUser_id, user.getUsername(),user.getEmail(), user.getAge());
-        return newUser_id;
+        SqlParameterSource parameters = new BeanPropertySqlParameterSource(user);
+        return jdbcInsert.executeAndReturnKey(parameters).intValue();
     }
 
 

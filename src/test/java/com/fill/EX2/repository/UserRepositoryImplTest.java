@@ -35,7 +35,7 @@ public class UserRepositoryImplTest {
                 .build();
         // just create new user
         Integer idSavedUser = userRepository.saveUser(user);
-
+        System.out.println("new user_id = " + idSavedUser);
         // get user by id
         User newUserbyId = userRepository.getUserById(idSavedUser);
         assertNotNull("Just added users should be in result", newUserbyId);

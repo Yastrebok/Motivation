@@ -2,8 +2,9 @@ package com.fill.EX2.repository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.jdbc.support.GeneratedKeyHolder;
-import org.springframework.jdbc.support.KeyHolder;
+import org.springframework.jdbc.core.namedparam.BeanPropertySqlParameterSource;
+import org.springframework.jdbc.core.namedparam.SqlParameterSource;
+import org.springframework.jdbc.core.simple.SimpleJdbcInsert;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -11,8 +12,15 @@ import java.util.List;
 @Repository
 public class SubjectRepositoryImpl implements SubjectRepository{
 
+    private JdbcTemplate jdbcTemplate;
+    private SimpleJdbcInsert jdbcInsert;
+
     @Autowired
-    JdbcTemplate jdbcTemplate;
+    public SubjectRepositoryImpl(JdbcTemplate jdbcTemplate) {
+        this.jdbcTemplate = jdbcTemplate;
+        this.jdbcInsert = new SimpleJdbcInsert(jdbcTemplate.getDataSource()).withTableName("subject").usingGeneratedKeyColumns("subject_id");
+    }
+
 
     @Override
     public List<Subject> getAllSubject() {
@@ -27,10 +35,9 @@ public class SubjectRepositoryImpl implements SubjectRepository{
     }
 
     @Override
-    public void addSubject(Subject subject) {
-        String query = "INSERT INTO subject ( subject_name, rate) VALUES(?,?)";
-        KeyHolder key = new GeneratedKeyHolder();
-        jdbcTemplate.update(query, subject.getSubject_name(), subject.getRate());
+    public Integer addSubject(Subject subject) {
+        SqlParameterSource parameters = new BeanPropertySqlParameterSource(subject);
+        return jdbcInsert.executeAndReturnKey(parameters).intValue();
     }
 
     @Override

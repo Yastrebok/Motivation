@@ -17,7 +17,7 @@ public interface SubjectRepository {
 
     Subject getSubjectById(Integer subject_id);
 
-    void addSubject(Subject subject);
+    Integer addSubject(Subject subject);
 
     void deleteSubject(Integer subject_id);
 
