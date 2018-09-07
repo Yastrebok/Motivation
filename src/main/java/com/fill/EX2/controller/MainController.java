@@ -56,7 +56,7 @@ public class MainController {
     @PostMapping("/allMarks/addMark")
     public String addSubject(@ModelAttribute("marksDao") Mark marksDto) {
         if (marksDto.getDate() == null) {
-            marksDto.setDate("");
+
         }
         marksDaoService.insertMarks(marksDto);
         return "menu";

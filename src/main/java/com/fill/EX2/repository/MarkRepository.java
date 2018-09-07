@@ -1,6 +1,5 @@
 package com.fill.EX2.repository;
 
-import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -8,6 +7,7 @@ import lombok.NoArgsConstructor;
 import org.springframework.jdbc.core.RowMapper;
 
 import java.sql.ResultSet;
+import java.time.LocalDateTime;
 import java.util.List;
 
 public interface MarkRepository {
@@ -19,15 +19,15 @@ public interface MarkRepository {
 
     @Data
     @Builder
-    @NoArgsConstructor(access = AccessLevel.PUBLIC)
-    @AllArgsConstructor(access = AccessLevel.PUBLIC)
+    @NoArgsConstructor()
+    @AllArgsConstructor()
     class Mark {
         private int id;
         private int subject_id;
         private int user_id;
         private int mark;
         private int rate;
-        private String date;
+        private LocalDateTime date;
     }
 
     RowMapper<Mark> MARK_MAPPER = (ResultSet resultSet, int row) -> {
@@ -37,7 +37,7 @@ public interface MarkRepository {
         marksDto.setUser_id(resultSet.getInt("user_id"));
         marksDto.setRate(resultSet.getInt("rate"));
         marksDto.setMark(resultSet.getInt("mark"));
-        marksDto.setDate(resultSet.getString("date"));
+        marksDto.setDate(resultSet.getTimestamp("date").toLocalDateTime());
         return marksDto;
     };
 }
