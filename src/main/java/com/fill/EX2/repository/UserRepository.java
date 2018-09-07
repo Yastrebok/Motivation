@@ -62,8 +62,8 @@ public interface UserRepository {
 
     RowMapper<User> USER_MAPPER = (ResultSet resultSet, int row) -> {
         User user = new User();
-        user.setId(resultSet.getInt("id"));
-        user.setUsername(resultSet.getString("username"));
+        user.setId(resultSet.getInt("user_id"));
+        user.setUsername(resultSet.getString("user_name"));
         user.setEmail(resultSet.getString("email"));
         user.setAge(resultSet.getInt("age"));
         return user;

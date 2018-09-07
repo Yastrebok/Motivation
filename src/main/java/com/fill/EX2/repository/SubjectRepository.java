@@ -29,14 +29,14 @@ public interface SubjectRepository {
     @AllArgsConstructor(access = AccessLevel.PUBLIC)
     class Subject {
         private int id;
-        private String Subject_name;
+        private String subjectName;
         private int rate;
     }
 
     RowMapper<Subject> SUBJECT_MAPPER = (ResultSet resultSet, int row) -> {
         Subject subject = new Subject();
         subject.setId(resultSet.getInt("subject_id"));
-        subject.setSubject_name(resultSet.getString("subject_name"));
+        subject.setSubjectName(resultSet.getString("subject_name"));
         subject.setRate(resultSet.getInt("rate"));
         return subject;
     };

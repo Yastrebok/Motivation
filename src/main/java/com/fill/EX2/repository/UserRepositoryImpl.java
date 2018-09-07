@@ -3,7 +3,7 @@ package com.fill.EX2.repository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.jdbc.core.namedparam.BeanPropertySqlParameterSource;
+import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.SqlParameterSource;
 import org.springframework.jdbc.core.simple.SimpleJdbcInsert;
 import org.springframework.stereotype.Repository;
@@ -24,20 +24,23 @@ public class UserRepositoryImpl implements UserRepository {
 
     @Override
     public List<User> getAllUsers() {
-        String sql = "select user_id as id ,user_name as username,email,age from user order by user_id";
+        String sql = "select user_id, user_name, email, age from user order by user_id";
         return jdbcTemplate.query(sql, USER_MAPPER);
     }
 
     @Override
     public Integer saveUser(User user) {
-        SqlParameterSource parameters = new BeanPropertySqlParameterSource(user);
+        SqlParameterSource parameters = new MapSqlParameterSource()
+                .addValue("user_name",user.getUsername())
+                .addValue("email", user.getEmail())
+                .addValue("age", user.getAge());
         return jdbcInsert.executeAndReturnKey(parameters).intValue();
     }
 
 
     @Override
     public User getUserById(int id) {
-        String sql = "SELECT user_id as id ,user_name as username,email,age FROM user WHERE user_id = ?";
+        String sql = "SELECT user_id, user_name, email, age FROM user WHERE user_id = ?";
         try {
             return jdbcTemplate.queryForObject(sql, USER_MAPPER, id);
         } catch (DataAccessException e) {
@@ -58,6 +61,11 @@ public class UserRepositoryImpl implements UserRepository {
 
     }
 
+    /**
+     * This method provide the result of user by month
+     * @param user_id
+     * @return sum which user earns in the month
+     */
     @Override
     public List<UserResult> getUserResult(Integer user_id) {
         String query = "select sum(c.quantity * mp.multiplier) as sum, c.month from multiplier mp " +
