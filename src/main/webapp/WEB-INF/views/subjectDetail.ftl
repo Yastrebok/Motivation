@@ -9,11 +9,11 @@
 <table>
     <tr>
         <td>Id</td>
-        <td>${subject.subject_id}</td>
+        <td>${subject.subjectId}</td>
     </tr>
     <tr>
         <td> Username</td>
-        <td>${subject.subject_name}</td>
+        <td>${subject.subjectName}</td>
     </tr>
     <tr>
         <td> Rate</td>
@@ -22,7 +22,7 @@
     <tr></tr>
 </table>
 <br><br>
-<a href="/subjects/delete/${subject.subject_id}">Delete</a>
+<a href="/subjects/delete/${subject.subjectId}">Delete</a>
 <br><br>
 <a href="/menu">Menu</a>
 </body>

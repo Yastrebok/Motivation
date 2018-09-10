@@ -16,7 +16,7 @@
             <td>Subject :</td>
             <td><select name="subject_id">
                 <#list listSubject as tmplattribute>
-                    <option value="${tmplattribute.subject_id}">${tmplattribute.subject_name}</option>
+                    <option value="${tmplattribute.subjectId}">${tmplattribute.subjectName}</option>
                 </#list>
             </select></td>
         </tr>

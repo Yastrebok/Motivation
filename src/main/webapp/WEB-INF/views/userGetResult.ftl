@@ -27,7 +27,7 @@
 </table>
 
 <br><br>
-<a href="/users/all/"> Users Lst </a>
+<a href="/users/all/">Back </a>
 <br><br>
 <a href="/menu">Menu</a>
 </body>

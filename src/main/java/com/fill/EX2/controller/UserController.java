@@ -11,8 +11,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import java.util.List;
-
 import static com.fill.EX2.service.UserService.UserDto;
 
 @Slf4j
@@ -26,14 +24,13 @@ public class UserController {
 
     @GetMapping("/all")
     public String getAllUsers(Model model) {
-        List<UserDto> userList = userService.findAll();
-        model.addAttribute("users", userList);
+        model.addAttribute("users", userService.getAllUserDto());
         return "usersList";
     }
 
     @GetMapping("/user/{id}")
     public String getById(@PathVariable("id") int id, Model model) {
-        model.addAttribute("user", userService.getById(id));
+        model.addAttribute("user", userService.getUserDtoById(id));
         return "userDetail";
     }
 
@@ -44,34 +41,35 @@ public class UserController {
 
     @PostMapping("/addUser")
     public String addUser(@ModelAttribute("user") UserDto user) {
-        userService.save(user);
+        userService.saveUserDto(user);
         return "redirect:/users/all";
     }
 
 
     @GetMapping("/delete/{id}")
     public String deleteUser(@PathVariable("id") int id) {
-        userService.deleteById(id);
+        userService.deleteUserDtoById(id);
         return "redirect:/users/all";
     }
 
     @GetMapping("/update/{id}")
     public String updateUser(@PathVariable("id") int id, Model model) {
-        model.addAttribute("user", userService.getById(id));
+        model.addAttribute("user", userService.getUserDtoById(id));
         return "editUser";
     }
 
     @PostMapping("/update")
     public String updateUser(@ModelAttribute("user") UserDto user) {
-        userService.update(user);
+        userService.updateUserDto(user);
         return "redirect:/user/" + user.getId();
     }
 
     @GetMapping("/{id}/sum")
     public String getResultSum(@PathVariable("id") Integer user_id, Model model){
-        model.addAttribute("userResult", userService.getUserResult(user_id));
+        UserDto userDto = userService.getUserResult(user_id);
+        model.addAttribute("userResult", userDto.getResultList() );
         log.info(userService.getUserResult(user_id).toString());
-        model.addAttribute("user_name", userService.getById(user_id).getUsername());
+        model.addAttribute("user_name", userDto.getUsername());
         return "userGetResult";
     }
 

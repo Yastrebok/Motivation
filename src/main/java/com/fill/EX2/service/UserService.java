@@ -12,17 +12,17 @@ import static com.fill.EX2.repository.UserRepository.UserResult;
 
 public interface UserService {
 
-    List<UserServiceImpl.UserDto> findAll();
+    List<UserDto> getAllUserDto();
 
-    void save(UserDto user);
+    void saveUserDto(UserDto user);
 
-    UserDto getById(int id);
+    UserDto getUserDtoById(int id);
 
-    void deleteById(int id);
+    void deleteUserDtoById(int id);
 
-    void update(UserDto user);
+    void updateUserDto(UserDto user);
 
-    List<UserResult> getUserResult(Integer user_id);
+    UserDto getUserResult(Integer user_id);
 
     @Data
     @Builder
@@ -33,5 +33,7 @@ public interface UserService {
         private String username;
         private String email;
         private int age;
+        private List<UserResult> resultList;
     }
+
 }

@@ -8,13 +8,10 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import static com.fill.EX2.repository.UserRepository.UserResult;
-
 @Service
 public class UserServiceImpl implements UserService {
 
-
-    public UserRepository userRepository;
+    private UserRepository userRepository;
 
     @Autowired
     public UserServiceImpl(UserRepository userRepository) {
@@ -22,37 +19,39 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public List<UserDto> findAll() {
+    public List<UserDto> getAllUserDto() {
         return userRepository.getAllUsers().stream()
                 .map(this::convertToUserDto)
                 .collect(Collectors.toList());
     }
 
     @Override
-    public void save(UserDto userDto) {
+    public void saveUserDto(UserDto userDto) {
         userRepository.saveUser(convertToUser(userDto));
     }
 
     @Override
-    public UserDto getById(int id) {
+    public UserDto getUserDtoById(int id) {
         User byId = userRepository.getUserById(id);
         return convertToUserDto(byId);
     }
 
     @Override
-    public void deleteById(int id) {
+    public void deleteUserDtoById(int id) {
         //???
         userRepository.deleteUserById(id);
     }
 
     @Override
-    public void update(UserDto userDto) {
+    public void updateUserDto(UserDto userDto) {
         userRepository.updateUser(convertToUser(userDto));
     }
 
     @Override
-    public List<UserResult> getUserResult(Integer user_id) {
-        return userRepository.getUserResult(user_id);
+    public UserDto getUserResult(Integer user_id) {
+        UserDto userDto = getUserDtoById(user_id);
+        userDto.setResultList(userRepository.getUserResult(user_id));
+        return  userDto;
     }
 
     private User convertToUser(UserDto userDto) {

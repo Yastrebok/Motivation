@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>Q
+<head>
     <meta charset="UTF-8">
     <title>Subjects</title>
 </head>
@@ -15,11 +15,11 @@
     </tr>
         <#list subjects as subject>
         <tr>
-            <td><a href="/subjects/subject/${subject.subject_id}"> ${subject.subject_id}</a></td>
-            <td>${subject.subject_name}</td>
+            <td><a href="/subjects/subject/${subject.subjectId}"> ${subject.subjectId}</a></td>
+            <td>${subject.subjectName}</td>
             <td>${subject.rate}</td>
             <br>
-            <td><a href="/subjects/update/${subject.subject_id}">Edit</a></td>
+            <td><a href="/subjects/update/${subject.subjectId}">Edit</a></td>
         </tr>
         </#list>
 

@@ -10,8 +10,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import java.util.List;
-
 import static com.fill.EX2.repository.SubjectRepository.Subject;
 
 @Controller
@@ -24,13 +22,12 @@ public class SubjectController {
     @GetMapping("/all")
     public String getAllSubject(Model model) {
         // add check for  null list
-        List<Subject> subjectList = subjectService.getAllSubject();
-        model.addAttribute("subjects", subjectList);
+        model.addAttribute("subjects", subjectService.getAllSubject());
         return "subjectList";
     }
 
-    @GetMapping("/subject/{subject_id}")
-    public String getSubjectById(@PathVariable("subject_id") Integer subject_id, Model model) {
+    @GetMapping("/subject/{subjectId}")
+    public String getSubjectById(@PathVariable("subjectId") Integer subject_id, Model model) {
         model.addAttribute("subject", subjectService.getSubjectById(subject_id));
         return "subjectDetail";
     }
@@ -46,14 +43,14 @@ public class SubjectController {
         return "redirect:/subjects/all";
     }
 
-    @GetMapping("/delete/{subject_id}")
-    public String deleteSubject(@PathVariable("subject_id") Integer subject_id) {
+    @GetMapping("/delete/{subjectId}")
+    public String deleteSubject(@PathVariable("subjectId") Integer subject_id) {
         subjectService.deleteSubject(subject_id);
         return "redirect:/subjects/all";
     }
 
-    @GetMapping("/update/{subject_id}")
-    public String updateSubject(@PathVariable("subject_id") Integer subject_id, Model model){
+    @GetMapping("/update/{subjectId}")
+    public String updateSubject(@PathVariable("subjectId") Integer subject_id, Model model){
         model.addAttribute("subject", subjectService.getSubjectById(subject_id));
         return "editSubject";
     }
