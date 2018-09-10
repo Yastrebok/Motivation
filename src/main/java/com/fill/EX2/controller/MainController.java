@@ -1,7 +1,7 @@
 package com.fill.EX2.controller;
 
 import com.fill.EX2.service.MarksDaoService;
-import com.fill.EX2.service.SubjectService;
+import com.fill.EX2.service.SubjectServiceImpl;
 import com.fill.EX2.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -21,7 +21,7 @@ import static com.fill.EX2.repository.MarkRepository.Mark;
 public class MainController {
 
     @Autowired
-    SubjectService subjectService;
+    SubjectServiceImpl subjectService;
 
     @Autowired
     MarksDaoService marksDaoService;
@@ -55,7 +55,7 @@ public class MainController {
 
     @PostMapping("/allMarks/addMark")
     public String addSubject(@ModelAttribute("marksDao") Mark marksDto) {
-        if (marksDto.getDate() == null) {
+        if (marksDto.getDate().toString() == null) {
 
         }
         marksDaoService.insertMarks(marksDto);

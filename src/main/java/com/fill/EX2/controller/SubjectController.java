@@ -1,6 +1,6 @@
 package com.fill.EX2.controller;
 
-import com.fill.EX2.service.SubjectService;
+import com.fill.EX2.service.SubjectServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -10,14 +10,14 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import static com.fill.EX2.repository.SubjectRepository.Subject;
+import static com.fill.EX2.service.SubjectService.SubjectDto;
 
 @Controller
 @RequestMapping("/subjects")
 public class SubjectController {
 
     @Autowired
-    SubjectService subjectService;
+    SubjectServiceImpl subjectService;
 
     @GetMapping("/all")
     public String getAllSubject(Model model) {
@@ -38,7 +38,7 @@ public class SubjectController {
     }
 
     @PostMapping("/newSubject")
-    public String addSubject(@ModelAttribute("subject") Subject subject) {
+    public String addSubject(@ModelAttribute("subject") SubjectDto subject) {
         subjectService.addSubject(subject);
         return "redirect:/subjects/all";
     }
@@ -56,9 +56,9 @@ public class SubjectController {
     }
 
     @PostMapping("/update")
-    public String updateSubject(@ModelAttribute("subject") Subject subject){
+    public String updateSubject(@ModelAttribute("subject") SubjectDto subject){
         subjectService.updateSubject(subject);
-        return "redirect:/subjects/subject/"+ subject.getId();
+        return "redirect:/subjects/subject/"+ subject.getSubjectId();
     }
 
 }
