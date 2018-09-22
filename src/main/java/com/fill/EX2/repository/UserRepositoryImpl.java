@@ -71,7 +71,7 @@ public class UserRepositoryImpl implements UserRepository {
         String query = "select sum(c.quantity * mp.multiplier) as sum, c.month from multiplier mp " +
                 "join (select  m.rate, m.mark, count(*) as quantity, date_format(date,\"%Y %M\") as month " +
                 "from marks_data m " +
-                "where m.user_id = ? group by 1, 2) as c on mp.rate = c.rate and mp.mark = c.mark";
-        return jdbcTemplate.query(query, USER_RESULT_MAPPER, user_id);
+                "where m.user_id = ? group by 1, 2, 4) as c on mp.rate = c.rate and mp.mark = c.mark group by c.month";
+        return jdbcTemplate.query(query,USER_RESULT_MAPPER,  user_id);
     }
 }

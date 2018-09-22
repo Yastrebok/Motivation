@@ -1,7 +1,7 @@
 package com.fill.EX2.controller;
 
-import com.fill.EX2.service.MarksDaoService;
-import com.fill.EX2.service.SubjectServiceImpl;
+import com.fill.EX2.service.MarkDaoService;
+import com.fill.EX2.service.SubjectService;
 import com.fill.EX2.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -12,19 +12,17 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import java.util.List;
-
-import static com.fill.EX2.repository.MarkRepository.Mark;
+import static com.fill.EX2.service.MarkDaoService.MarkDto;
 
 @Controller
 @RequestMapping("/")
 public class MainController {
 
     @Autowired
-    SubjectServiceImpl subjectService;
+    SubjectService subjectService;
 
     @Autowired
-    MarksDaoService marksDaoService;
+    MarkDaoService marksDaoService;
 
     @Autowired
     UserService userService;
@@ -39,28 +37,25 @@ public class MainController {
         return "menu";
     }
 
-    @GetMapping("/allMarks/{user_id}")
-    public String getMarksByUser(@PathVariable("user_id") Integer user_id, Model model){
-        List<Mark> marksDtoList = marksDaoService.getMarkSByUser(user_id);
-        model.addAttribute("marksDao", marksDtoList);
-        model.addAttribute("user_id", user_id);
+    @GetMapping("/allMarks/{userId}")
+    public String getMarksByUser(@PathVariable("userId") Integer user_id, Model model){
+        model.addAttribute("marksDao", marksDaoService.getMarkSByUser(user_id));
+        model.addAttribute("userId", user_id);
         return "marksManager";
     }
 
-    @GetMapping("/allMarks/addMark/{user_id}")
-    public String createSubjectPage(@PathVariable("user_id")Integer user_id, Model model) {
+    @GetMapping("/allMarks/addMark/{userId}")
+    public String createSubjectPage(@PathVariable("userId")Integer userId, Model model) {
+        model.addAttribute("userName",userService.getUserDtoById(userId).getUsername());
         model.addAttribute("listSubject", subjectService.getAllSubject());
+        model.addAttribute("listMarks", marksDaoService.getTemplateMarks());
         return "marksAdding";
     }
 
     @PostMapping("/allMarks/addMark")
-    public String addSubject(@ModelAttribute("marksDao") Mark marksDto) {
-        if (marksDto.getDate().toString() == null) {
-
-        }
+    public String addSubject(@ModelAttribute("marksDao") MarkDto marksDto) {
         marksDaoService.insertMarks(marksDto);
-        return "menu";
-//        return "redirect:/allMarks/" + marksDto.getUser_id();
+        return "redirect:/allMarks/" + marksDto.getUserId();
     }
 
 }

@@ -43,11 +43,23 @@ public interface UserRepository {
     }
 
     RowMapper<UserResult> USER_RESULT_MAPPER = (ResultSet resultSet, int row) -> {
-        UserResult sum = new UserResult();
-        sum.setMonth(resultSet.getString("month"));
-        sum.setSum(resultSet.getDouble("sum"));
+            UserResult sum = new UserResult();
+            sum.setMonth(resultSet.getString("month"));
+            sum.setSum(resultSet.getDouble("sum"));
         return sum;
     };
+
+
+//    RowMapper<List<UserResult>> USER_RESULT_MAPPER = (ResultSet resultSet, int row) -> {
+//        List<UserResult> list = new ArrayList<>();
+//        for (; resultSet.next();  ) {
+//            UserResult sum = new UserResult();
+//            sum.setMonth(resultSet.getString("month"));
+//            sum.setSum(resultSet.getDouble("sum"));
+//            list.add(sum);
+//        }
+//        return list;
+//    };
 
     @Data
     @Builder

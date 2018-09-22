@@ -31,13 +31,13 @@ public interface MarkRepository {
     }
 
     RowMapper<Mark> MARK_MAPPER = (ResultSet resultSet, int row) -> {
-        Mark marksDto = new Mark();
-        marksDto.setId(resultSet.getInt("id"));
-        marksDto.setSubject_id(resultSet.getInt("subject_id"));
-        marksDto.setUser_id(resultSet.getInt("user_id"));
-        marksDto.setRate(resultSet.getInt("rate"));
-        marksDto.setMark(resultSet.getInt("mark"));
-        marksDto.setDate(resultSet.getTimestamp("date").toLocalDateTime());
-        return marksDto;
+        Mark mark = new Mark();
+        mark.setId(resultSet.getInt("id"));
+        mark.setSubject_id(resultSet.getInt("subject_id"));
+        mark.setUser_id(resultSet.getInt("user_id"));
+        mark.setRate(resultSet.getInt("rate"));
+        mark.setMark(resultSet.getInt("mark"));
+        mark.setDate(resultSet.getTimestamp("date").toLocalDateTime());
+        return mark;
     };
 }

@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>User result</title>
 </head>
+
 <body>
 <h1>User result</h1>
 <table>
@@ -11,18 +12,17 @@
         <td> Username</td>
         <td>${user_name}</td>
     </tr>
+    <br><br>
     <tr>
-        <td>Month </td><br><br>
-        <td>Price </td>
+        <td>Month</td>
+        <td>Price</td>
     </tr>
     <#list userResult as result>
         <tr>
-            <td>${result.month}</td><br><br>
-            <td>${result.sum}</td><br><br>
+            <td>${result.month}</td>
+            <td>${result.sum}</td>
         </tr>
     </#list>
-
-
     <tr></tr>
 </table>
 

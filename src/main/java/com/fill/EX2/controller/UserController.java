@@ -11,6 +11,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.util.ArrayList;
+
+import static com.fill.EX2.repository.UserRepository.UserResult;
 import static com.fill.EX2.service.UserService.UserDto;
 
 @Slf4j
@@ -61,14 +64,14 @@ public class UserController {
     @PostMapping("/update")
     public String updateUser(@ModelAttribute("user") UserDto user) {
         userService.updateUserDto(user);
-        return "redirect:/user/" + user.getId();
+        return "redirect:/users/user/" + user.getId();
     }
 
     @GetMapping("/{id}/sum")
-    public String getResultSum(@PathVariable("id") Integer user_id, Model model){
+    public String getResultSum(@PathVariable("id") Integer user_id, Model model) {
         UserDto userDto = userService.getUserResult(user_id);
-        model.addAttribute("userResult", userDto.getResultList() );
-        log.info(userService.getUserResult(user_id).toString());
+        model.addAttribute("userResult", userDto.getResultList() == null ? new ArrayList<UserResult>() : userDto.getResultList());
+
         model.addAttribute("user_name", userDto.getUsername());
         return "userGetResult";
     }

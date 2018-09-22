@@ -7,7 +7,7 @@
 <body>
 <form  name = "Subject name" action = "/subjects/newSubject" method="post">
     <p>Username</p>
-    <input title="Subject name" type="text" name="subject_name">
+    <input title="Subject name" type="text" name="subjectName">
     <p>Rate</p>
     <input title="Rate" type="text" name="rate">
     <br>

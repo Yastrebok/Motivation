@@ -21,11 +21,11 @@
             <td>${user.email}</td>
             <td>${user.age}</td>
             <br>
-            <td><a href="/users/update/${user.id}"> Edit  </a> </td>
+            <td><a href="/users/update/${user.id}"> Edit </a></td>
             <br>
-            <td><a href="/allMarks/${user.id}"> Marks  </a> </td>
+            <td><a href="/allMarks/${user.id}"> Marks </a></td>
             <br>
-            <td><a href="/users/${user.id}/sum"> Result  </a> </td>
+            <td><a href="/users/${user.id}/sum"> Result </a></td>
         </tr>
         </#list>
 

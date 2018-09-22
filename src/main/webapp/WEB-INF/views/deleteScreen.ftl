@@ -9,11 +9,11 @@
 <table>
     <tr>
         <td>Id</td>
-        <td>${subject.subject_id}</td>
+        <td>${subject.subjectId}</td>
     </tr>
     <tr>
         <td> Username</td>
-        <td>${subject.subject_name}</td>
+        <td>${subject.subjectName}</td>
     </tr>
     <tr>
         <td> Rate</td>

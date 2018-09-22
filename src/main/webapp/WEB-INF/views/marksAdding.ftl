@@ -5,28 +5,36 @@
     <title>Marks</title>
 </head>
 <body>
+<h1>New mark for ${userName}</h1>
 <form name="Username" action="/allMarks/addMark" method="post">
-
     <table>
         <tr>
             <td>User :</td>
-            <td><input title="User_id" type="text" name="user_id" value=${user_id}></td>
+            <td><input title="UserName" type="text" name="userName" value=${userName}></td>
         </tr>
+        <#--<tr>-->
+            <td><input title="UserId" type="hidden" name="userId" value=${userId}></td>
+        <#--</tr>-->
+
         <tr>
             <td>Subject :</td>
-            <td><select name="subject_id">
+            <td><select name="subjectId" >
                 <#list listSubject as tmplattribute>
-                    <option value="${tmplattribute.subjectId}">${tmplattribute.subjectName}</option>
+                    <option  value="${tmplattribute.subjectId}"> ${tmplattribute.subjectName}</option>
                 </#list>
             </select></td>
         </tr>
         <tr>
             <td>Marks :</td>
-            <td><input title="Mark" type="text" name="mark"></td>
+            <td><select name="mark" >
+                <#list listMarks as mark>
+                    <option  value="${mark}"> ${mark}</option>
+                </#list>
+            </select></td>
         </tr>
         <tr>
             <td>Date of receipt :</td>
-            <td><input title="Date" type="date" name="date"></td>
+            <td><input title="Date" type="date" name="month"></td>
         </tr>
     </table>
 
