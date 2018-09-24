@@ -22,6 +22,6 @@
     <tr></tr>
 </table>
 <br>
-<a href="/menu">Menu</a>
+<a href="/motivation/menu">Menu</a>
 </body>
 </html>

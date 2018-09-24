@@ -27,8 +27,8 @@
 </table>
 
 <br><br>
-<a href="/users/all/">Back </a>
+<a href="/motivation/users/all/">Back </a>
 <br><br>
-<a href="/menu">Menu</a>
+<a href="/motivation/menu">Menu</a>
 </body>
 </html>

@@ -15,18 +15,18 @@
     </tr>
         <#list subjects as subject>
         <tr>
-            <td><a href="/subjects/subject/${subject.subjectId}"> ${subject.subjectId}</a></td>
+            <td><a href="/motivation/subjects/subject/${subject.subjectId}"> ${subject.subjectId}</a></td>
             <td>${subject.subjectName}</td>
             <td>${subject.rate}</td>
             <br>
-            <td><a href="/subjects/update/${subject.subjectId}">Edit</a></td>
+            <td><a href="/motivation/subjects/update/${subject.subjectId}">Edit</a></td>
         </tr>
         </#list>
 
 </table>
 <br>
-<a href="/menu">Menu</a>
+<a href="/motivation/menu">Menu</a>
 <br><br>
-<a href="/subjects/newSubject">New suject</a>
+<a href="/motivation/subjects/newSubject">New suject</a>
 </body>
 </html>

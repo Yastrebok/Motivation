@@ -22,8 +22,8 @@
     <tr></tr>
 </table>
 <br><br>
-<a href="/subjects/delete/${subject.subjectId}">Delete</a>
+<a href="/motivation/subjects/delete/${subject.subjectId}">Delete</a>
 <br><br>
-<a href="/menu">Menu</a>
+<a href="/motivation/menu">Menu</a>
 </body>
 </html>

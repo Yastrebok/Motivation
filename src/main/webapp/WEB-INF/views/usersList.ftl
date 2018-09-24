@@ -16,23 +16,23 @@
     </tr>
         <#list users as user>
         <tr>
-            <td><a href="/users/user/${user.id}"> ${user.id}</a></td>
+            <td><a href="/motivation/users/user/${user.id}"> ${user.id}</a></td>
             <td>${user.username}</td>
             <td>${user.email}</td>
             <td>${user.age}</td>
             <br>
-            <td><a href="/users/update/${user.id}"> Edit </a></td>
+            <td><a href="/motivation/users/update/${user.id}"> Edit </a></td>
             <br>
-            <td><a href="/allMarks/${user.id}"> Marks </a></td>
+            <td><a href="/motivation/allMarks/${user.id}"> Marks </a></td>
             <br>
-            <td><a href="/users/${user.id}/sum"> Result </a></td>
+            <td><a href="/motivation/users/${user.id}/sum"> Result </a></td>
         </tr>
         </#list>
 
 </table>
 <br>
-<a href="/menu">Menu</a>
-<br><br>
-<a href="/users/addUser">New User</a>
+<a href="/motivation/menu">Menu<br></a>
+<br>
+<a href="/motivation/users/addUser">New User</a>
 </body>
 </html>

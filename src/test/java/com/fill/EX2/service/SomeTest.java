@@ -8,6 +8,7 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
+//@RunWith(SpringRunner.class)
 public class SomeTest {
     private static final Integer USER_ID = 1;
     @Mock

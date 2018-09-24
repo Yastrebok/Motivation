@@ -6,16 +6,13 @@
 </head>
 <body>
 <h1>New mark for ${userName}</h1>
-<form name="Username" action="/allMarks/addMark" method="post">
+<form name="Username" action="/motivation/allMarks/addMark" method="post">
     <table>
         <tr>
             <td>User :</td>
             <td><input title="UserName" type="text" name="userName" value=${userName}></td>
         </tr>
-        <#--<tr>-->
-            <td><input title="UserId" type="hidden" name="userId" value=${userId}></td>
-        <#--</tr>-->
-
+        <td><input title="UserId" type="hidden" name="userId" value=${userId}></td>
         <tr>
             <td>Subject :</td>
             <td><select name="subjectId" >
@@ -40,7 +37,7 @@
 
 
     <br><br>
-    <a href="/menu">Cancel </a><br>
+    <a href="/motivation/menu">Cancel </a><br>
 
     <input type="submit" value="OK">
 

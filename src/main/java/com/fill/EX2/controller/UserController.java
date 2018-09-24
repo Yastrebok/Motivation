@@ -71,7 +71,6 @@ public class UserController {
     public String getResultSum(@PathVariable("id") Integer user_id, Model model) {
         UserDto userDto = userService.getUserResult(user_id);
         model.addAttribute("userResult", userDto.getResultList() == null ? new ArrayList<UserResult>() : userDto.getResultList());
-
         model.addAttribute("user_name", userDto.getUsername());
         return "userGetResult";
     }

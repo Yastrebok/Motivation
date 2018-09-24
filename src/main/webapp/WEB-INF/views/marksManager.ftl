@@ -21,8 +21,8 @@
 </table>
 
 <br><br>
-<a href="/allMarks/addMark/${userId}">Add mark</a>
+<a href="/motivation/allMarks/addMark/${userId}">Add mark</a>
 <br><br>
-<a href="/users/all"> Back</a>
+<a href="/motivation/users/all"> Back</a>
 </body>
 </html>

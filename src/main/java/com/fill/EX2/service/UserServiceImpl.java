@@ -21,6 +21,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public List<UserDto> getAllUserDto() {
         return userRepository.getAllUsers().stream()
+                .filter(user -> user.getUsername() != null)
                 .map(this::convertToUserDto)
                 .collect(Collectors.toList());
     }

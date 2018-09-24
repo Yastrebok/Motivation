@@ -24,7 +24,7 @@ public class SubjectRepositoryImpl implements SubjectRepository {
 
     @Override
     public List<Subject> getAllSubject() {
-        String query = "SELECT * FROM subject";
+        String query = "SELECT subject_id, subject_name, rate FROM subject WHERE subject_name IS NOT NULL";
         return jdbcTemplate.query(query, SUBJECT_MAPPER);
     }
 

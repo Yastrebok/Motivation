@@ -5,13 +5,13 @@
     <title>Create user</title>
 </head>
 <body>
-<form  name = "Subject name" action = "/subjects/newSubject" method="post">
+<form  name = "Subject name" action = "/motivation/subjects/newSubject" method="post">
     <p>Username</p>
     <input title="Subject name" type="text" name="subjectName">
     <p>Rate</p>
     <input title="Rate" type="text" name="rate">
     <br>
-    <a href="/subjects/all">Cancel </a>
+    <a href="/motivation/subjects/all">Cancel </a>
     <br>
     <input type="submit" value="OK">
 </form>
