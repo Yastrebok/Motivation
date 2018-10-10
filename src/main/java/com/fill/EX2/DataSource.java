@@ -16,7 +16,7 @@ public class DataSource {
     @Bean
     public javax.sql.DataSource getDataSource() {
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
-        dataSource.setUrl("jdbc:mysql://localhost:3306/developers");
+        dataSource.setUrl("jdbc:mysql://localhost:3306/motivation");
         dataSource.setUsername("root");
         dataSource.setPassword("root");
         dataSource.setDriverClassName("com.mysql.jdbc.Driver");

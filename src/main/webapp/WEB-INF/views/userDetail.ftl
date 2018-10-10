@@ -6,7 +6,8 @@
 </head>
 <body>
 <h1>User info</h1>
-<table>
+<table class="table table-striped">
+    <tbody>
     <tr>
         <td>Id</td>
         <td>${user.id}</td>
@@ -23,7 +24,8 @@
         <td> Age</td>
         <td>${user.age}</td>
     </tr>
-    <tr></tr>
+    <tr>
+    </tbody>
 </table>
 <br>
 <a href="/motivation/users/all">Back <br></a>
