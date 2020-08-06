@@ -29,7 +29,7 @@
         <#list users as user>
         <tr>
             <td><a href="/motivation/users/user/${user.id}"> ${user.id}</a></td>
-            <td>${user.username}</td>
+            <td><a href="/motivation/users/user/${user.id}">${user.username}</a></td>
             <td>${user.email}</td>
             <td>${user.age}</td>
             <td><a href="/motivation/users/update/${user.id}"> Edit </a></td>

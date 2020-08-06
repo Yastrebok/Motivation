@@ -15,7 +15,7 @@
         <tbody>
         <tr>
             <td>Id</td>
-            <td><input title="Id" type="text" name="id" value="${user.id}"></td>
+            <td>${user.id}</td>
         </tr>
         <tr>
             <td>Username</td>

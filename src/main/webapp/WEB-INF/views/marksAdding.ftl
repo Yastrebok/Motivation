@@ -16,7 +16,7 @@
         <tbody>
         <tr>
             <td>User :</td>
-            <td><input title="UserName" type="text" name="userName" value=${userName}></td>
+            <td>${userName}</td>
         </tr>
         <td><input title="UserId" type="hidden" name="userId" value=${userId}></td>
         <tr>
@@ -37,7 +37,7 @@
         </tr>
         <tr>
             <td>Date of receipt :</td>
-            <td><input title="Date" type="date" name="month"></td>
+            <td><input title="Date" type="date" name="month" id=e></td>
         </tr>
         </tbody>
     </table>
@@ -45,8 +45,9 @@
 
     <br><br>
     <a href="/motivation/menu">Cancel </a><br>
+    <br>
+    <input type="submit" value="submit">
 
-    <input type="submit" value="OK">
 
 </form>
 <!-- Optional JavaScript -->
@@ -60,5 +61,8 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
         integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
         crossorigin="anonymous"></script>
+<script>
+    document.getElementById('e').value = new Date().toISOString().substring(0, 10);
+</script>
 </body>
 </html>
